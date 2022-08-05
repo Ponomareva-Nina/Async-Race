@@ -1,3 +1,5 @@
+Deploy: https://ponomareva-nina.github.io/Async-Race/public/
+
 # async-race-api
 Api for Rolling Scopes School task "Async Race".
 
