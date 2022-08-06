@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Async Race</title>
 <script defer src="main.bundle.js"></script></head>
-<body>
+<body id="body">
+<!--
     <header>
         <h1>Let the race begin!</h1>
         <button class="btn btn-garage">To garage </button>
@@ -15,29 +16,37 @@
     
     <section class="garage">
         <div class="garage__control-bar">
-            <div class="create-cars">
+            <div class="cars-settings">
               <input type="text">
               <input type="color" name="color-create" id="color-create">
               <button class="create-car__btn-create btn1" id="create">Create</button>
             </div>
 
-            <div class="update-cars">
+            <div class="cars-settings">
               <input type="text">
               <input type="color" name="color-update" id="color-update">
               <button class="update-car__btn-update btn1" id="update">Update</button>
             </div>
 
             <div class="race-control-bar">
-              <button class="btn start-race-btn">Start race</button>
-              <button class="btn reset-btn">Reset</button>
+              <button class="btn start-race-btn">Race</button>
+              <button class="btn reset-all-btn">Reset</button>
               <button class="btn generate-cars-btn">Generate cars</button>
             </div>
         </div>
 
         <div class="garage__cars">
-    
+          <h2>Garage <span class="cars-counter">(0)</span>></h2>
+          <div class="car-container"> 
+            <button class="btn btn-select">Select</button>
+            <button class="btn btn-remove">Remove</button>
+            <p class="car-name"></p>
+            <button class="btn start-car-btn">Start</button>
+            <button class="btn reset-car-btn">Reset</button>
+            <div class="car-image"></div>
+          </div>
         </div>
     </section>
-
+  -->
 </body>
 </html>
