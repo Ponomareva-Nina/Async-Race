@@ -52,7 +52,7 @@ class CarSettingsInput extends base_components_1.BaseComponent {
         //создадим инпут для выбора цвета:
         this.colorInput = document.createElement('input');
         this.colorInput.setAttribute('type', 'color');
-        this.colorInput.classList.add(`${styles[0]}__colorInput`);
+        this.colorInput.classList.add(`${styles[0]}__color-input`);
         this.colorInput.value = state.color;
         this.element.append(this.colorInput);
         // и кнопку:

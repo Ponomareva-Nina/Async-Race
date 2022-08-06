@@ -1,5 +1,79 @@
 @import "./fonts.scss";
 
-h1 {
-    font-family: 'Rubik';
+$font-stack: 'Rubik', 'Arial', sans-serif;
+$color-primary: #111111;
+$color-secondary: #ffd1b3;
+$hover-color: #d85600;
+$border-color: #747474;
+$title-color: #d85600;
+$inactive-color:#888888; 
+$main-bg-color: #ffffff;
+$secondary-bg-color: #fffaeb;
+
+body {
+    font-family: $font-stack;
+    font-style: normal;
+    font-weight: 400;
+    color: $color-primary;
+    background-color: $main-bg-color;
+}
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+h1, h2 {
+    font-family: $font-stack;
+    font-size: 2rem;
+    color: $title-color;
+}
+
+input {
+    border: 2px solid $border-color;
+}
+
+.create-car__text-input,
+.update-car__text-input {
+    padding: 5px 0;
+}
+
+.btn {
+    background-color: transparent;
+    border: 2px solid $border-color;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    min-width: 5rem;
+
+    &:hover {
+        border: 2px solid $hover-color;
+        background-color: $color-secondary;
+    }
+}
+
+.garage__control-bar {
+    @include flex();
+    width: 300px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-car, 
+.update-car,
+.race-control-bar {
+    @include flex();
+    align-self: stretch;
+    justify-content: space-between;
+}
+
+
+header {
+margin-bottom: 1rem;
+}
+
+.btn-garage {
+    margin-right: 5px;
 }
