@@ -1,6 +1,7 @@
 import "../styles/style.scss";
 import {BaseComponent, baseUrl, car, carFeatures, winner} from './base_components';
 import { CarContainer } from "./car";
+import { getCars } from "./functions";
 
 export class GaragePage extends BaseComponent {
     private carsCounter;
@@ -8,6 +9,7 @@ export class GaragePage extends BaseComponent {
     private createCarsBar;
     private updateCarsBar;
     private raceControlBar;
+    garageCars;
     garageTitle: BaseComponent;
    
     constructor (root: HTMLElement, data: {color: string; text: string}) {
@@ -32,9 +34,13 @@ export class GaragePage extends BaseComponent {
         this.raceControlBar = new RaceControlBar(garageControlBar.element);
         
 
-        const garageCars = new BaseComponent(this.element, 'div', ['garage__cars']);
-        this.garageTitle = new BaseComponent(garageCars.element, 'h2', []);
+       this.garageCars = new BaseComponent(this.element, 'div', ['garage__cars']);
+        this.garageTitle = new BaseComponent(this.garageCars.element, 'h2', []);
         this.garageTitle.element.innerHTML = `Garage (${this.carsCounter})`;
+    }
+
+   renderCars(){
+        getCars(this.garageCars.element);
     }
 }
 
@@ -87,3 +93,4 @@ export class CarSettingsInput extends BaseComponent {
         this.btn.element.textContent = this.state.btnTxt;
     }
 }
+

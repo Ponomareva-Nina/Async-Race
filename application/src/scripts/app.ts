@@ -6,3 +6,4 @@ const body: HTMLElement = document.getElementById('body') as HTMLElement;
 
 const header = new Header(body);
 const garagePage = new GaragePage(body, {color: 'yellow', text: ''}); 
+garagePage.renderCars();

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarSettingsInput = exports.RaceControlBar = exports.GaragePage = void 0;
 require("../styles/style.scss");
 const base_components_1 = require("./base_components");
+const functions_1 = require("./functions");
 class GaragePage extends base_components_1.BaseComponent {
     constructor(root, data) {
         super(root, 'section', ['garage']);
@@ -21,9 +22,12 @@ class GaragePage extends base_components_1.BaseComponent {
             text: data.text,
         });
         this.raceControlBar = new RaceControlBar(garageControlBar.element);
-        const garageCars = new base_components_1.BaseComponent(this.element, 'div', ['garage__cars']);
-        this.garageTitle = new base_components_1.BaseComponent(garageCars.element, 'h2', []);
+        this.garageCars = new base_components_1.BaseComponent(this.element, 'div', ['garage__cars']);
+        this.garageTitle = new base_components_1.BaseComponent(this.garageCars.element, 'h2', []);
         this.garageTitle.element.innerHTML = `Garage (${this.carsCounter})`;
+    }
+    renderCars() {
+        (0, functions_1.getCars)(this.garageCars.element);
     }
 }
 exports.GaragePage = GaragePage;
