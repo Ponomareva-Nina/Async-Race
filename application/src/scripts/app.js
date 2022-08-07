@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("../styles/style.scss");
+require("../assets/images/flag.png");
 const base_components_1 = require("./base_components");
 const garage_1 = require("./garage");
 const body = document.getElementById('body');

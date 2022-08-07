@@ -1,4 +1,6 @@
-import "../styles/style.scss";
+import '../styles/style.scss';
+import '../assets/images/flag.png';
+
 import {BaseComponent, Header, baseUrl, car, carFeatures, winner} from './base_components';
 import { GaragePage } from "./garage";
 
