@@ -1,6 +1,8 @@
 import "../styles/style.scss";
 import { BaseComponent } from "./base_components";
 import { getWinners } from "./api";
+import { carImage } from "./carImage";
+import { CarContainer } from "./car";
 export class WinnersPage extends BaseComponent {
     private winnersCounter;
     private currentPage;
@@ -16,7 +18,7 @@ export class WinnersPage extends BaseComponent {
        
     constructor (root: HTMLElement) {
         super(root, 'section', ['section', 'winners']);
-        this.winnersCounter = 3;
+        this.winnersCounter = 1;
         this.currentPage = 1;
         
         //создание базовой разметки:
@@ -36,7 +38,7 @@ export class WinnersPage extends BaseComponent {
         this.header4.element.textContent = 'Wins';
         this.header5.element.textContent = 'Best Time (sec)';
 
-        this.winnersContent = new BaseComponent(this.element, 'div', ['winner-row']);  
+        this.winnersContent = new BaseComponent(this.element, 'div', ['winner-rows']);  
     }
     
     renderWinnersPage() {
@@ -45,8 +47,23 @@ export class WinnersPage extends BaseComponent {
 }
 
 export class WinnerRow extends BaseComponent {
+    numberCol;
+    carCol;
+    nameCol;
+    winsCol;
+    timeCol;
 
-    constructor (root: HTMLElement, id: number, wins: number, time: number) {
+    constructor (root: HTMLElement, number: number, car: string, wins: number, time: number) {
         super(root, 'div', ['winner-row'])
+        this.numberCol = new BaseComponent(this.element, 'div', ['number']); 
+        this.numberCol.element.textContent = number.toString();
+        this.carCol = new BaseComponent(this.element, 'div', ['car']);
+        this.carCol.element.textContent = 'carImage';
+        this.nameCol = new BaseComponent(this.element, 'div', ['name']);
+        this.nameCol.element.textContent = car;
+        this.winsCol = new BaseComponent(this.element, 'div', ['wins']);
+        this.winsCol.element.textContent = wins.toString();
+        this.timeCol = new BaseComponent(this.element, 'div', ['time']);
+        this.timeCol.element.textContent = time.toString();
     }
 }

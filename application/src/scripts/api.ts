@@ -34,15 +34,16 @@ import { WinnersPage, WinnerRow } from "./winners";
   }
 
   export async function getWinners(root: HTMLElement) {
-    fetch(`$baseURL}/winners`)
+    fetch(`${baseUrl}/winners`)
     .then(response => response.json())
     .then (data => {
       if(data) {
-       data.forEach((item: winner) => {
-        let id = item.id;
+       data.forEach((item: winner, index: number) => {
+        let number = index;
+        let car = 'carModel';  //ф-ция для поиска модели машины по id
         let wins = item.wins;
         let time = item.time; 
-        new WinnerRow(root, id, wins, time);
+        new WinnerRow(root, number, car, wins, time);
        })
       }
     });

@@ -31,15 +31,16 @@ function getCars(root) {
 exports.getCars = getCars;
 function getWinners(root) {
     return __awaiter(this, void 0, void 0, function* () {
-        fetch(`$baseURL}/winners`)
+        fetch(`${base_components_1.baseUrl}/winners`)
             .then(response => response.json())
             .then(data => {
             if (data) {
-                data.forEach((item) => {
+                data.forEach((item, index) => {
+                    let number = index;
                     let id = item.id;
                     let wins = item.wins;
                     let time = item.time;
-                    new winners_1.WinnerRow(root, id, wins, time);
+                    new winners_1.WinnerRow(root, number, id, wins, time);
                 });
             }
         });

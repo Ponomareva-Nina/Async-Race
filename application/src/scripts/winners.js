@@ -24,7 +24,7 @@ class WinnersPage extends base_components_1.BaseComponent {
         this.header3.element.textContent = 'Name';
         this.header4.element.textContent = 'Wins';
         this.header5.element.textContent = 'Best Time (sec)';
-        this.winnersContent = new base_components_1.BaseComponent(this.element, 'div', ['winner-row']);
+        this.winnersContent = new base_components_1.BaseComponent(this.element, 'div', ['winner-rows']);
     }
     renderWinnersPage() {
         (0, api_1.getWinners)(this.winnersContent.element);
@@ -32,8 +32,18 @@ class WinnersPage extends base_components_1.BaseComponent {
 }
 exports.WinnersPage = WinnersPage;
 class WinnerRow extends base_components_1.BaseComponent {
-    constructor(root, id, wins, time) {
+    constructor(root, number, id, wins, time) {
         super(root, 'div', ['winner-row']);
+        this.numberCol = new base_components_1.BaseComponent(this.element, 'div', ['number']);
+        this.numberCol.element.textContent = number.toString();
+        this.carCol = new base_components_1.BaseComponent(this.element, 'div', ['car']);
+        this.carCol.element.textContent = 'carImage';
+        this.nameCol = new base_components_1.BaseComponent(this.element, 'div', ['name']);
+        this.nameCol.element.textContent = 'car model';
+        this.winsCol = new base_components_1.BaseComponent(this.element, 'div', ['wins']);
+        this.winsCol.element.textContent = wins.toString();
+        this.timeCol = new base_components_1.BaseComponent(this.element, 'div', ['time']);
+        this.timeCol.element.textContent = time.toString();
     }
 }
 exports.WinnerRow = WinnerRow;

@@ -10,12 +10,12 @@ const header = new base_components_1.Header(body);
 const garagePage = new garage_1.GaragePage(body, { color: 'yellow', text: 'BMW' });
 garagePage.renderCars();
 const winnersBtn = document.querySelector('.btn-winners');
-const garageBtn = document.querySelector('.btn-garage');
 winnersBtn.addEventListener('click', () => {
     clearPage();
     let winnersPage = new winners_1.WinnersPage(body);
     winnersPage.renderWinnersPage();
 });
+const garageBtn = document.querySelector('.btn-garage');
 garageBtn.addEventListener('click', () => {
     clearPage();
     let garage = new garage_1.GaragePage(body, { color: 'yellow', text: 'VolksWagen' });
