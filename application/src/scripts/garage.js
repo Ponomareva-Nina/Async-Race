@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarSettingsInput = exports.RaceControlBar = exports.GaragePage = void 0;
 require("../styles/style.scss");
 const base_components_1 = require("./base_components");
-const functions_1 = require("./functions");
+const api_1 = require("./api");
 class GaragePage extends base_components_1.BaseComponent {
     constructor(root, data) {
-        super(root, 'section', ['garage']);
-        this.carsCounter = '0';
+        super(root, 'section', ['section', 'garage']);
+        this.carsCounter = 4;
         this.currentPage = 1;
         //создание базовой разметки гаража:
         const garageControlBar = new base_components_1.BaseComponent(this.element, 'div', ['garage__control-bar']);
@@ -19,15 +19,15 @@ class GaragePage extends base_components_1.BaseComponent {
         this.updateCarsBar = new CarSettingsInput(garageControlBar.element, ['update-car'], {
             btnTxt: 'Update',
             color: data.color,
-            text: data.text,
+            text: '',
         });
         this.raceControlBar = new RaceControlBar(garageControlBar.element);
         this.garageCars = new base_components_1.BaseComponent(this.element, 'div', ['garage__cars']);
         this.garageTitle = new base_components_1.BaseComponent(this.garageCars.element, 'h2', []);
-        this.garageTitle.element.innerHTML = `Garage (${this.carsCounter})`;
+        this.garageTitle.element.textContent = `Garage (${this.carsCounter})`;
     }
     renderCars() {
-        (0, functions_1.getCars)(this.garageCars.element);
+        (0, api_1.getCars)(this.garageCars.element);
     }
 }
 exports.GaragePage = GaragePage;

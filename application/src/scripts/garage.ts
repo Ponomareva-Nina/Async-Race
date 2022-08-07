@@ -1,7 +1,7 @@
 import "../styles/style.scss";
 import {BaseComponent, baseUrl, car, carFeatures, winner} from './base_components';
 import { CarContainer } from "./car";
-import { getCars } from "./functions";
+import { getCars } from "./api";
 
 export class GaragePage extends BaseComponent {
     private carsCounter;
@@ -13,8 +13,8 @@ export class GaragePage extends BaseComponent {
     garageTitle: BaseComponent;
    
     constructor (root: HTMLElement, data: {color: string; text: string}) {
-        super(root, 'section', ['garage']);
-        this.carsCounter = '0';
+        super(root, 'section', ['section', 'garage']);
+        this.carsCounter = 4;
         this.currentPage = 1;
         
 
@@ -29,19 +29,19 @@ export class GaragePage extends BaseComponent {
         this.updateCarsBar = new CarSettingsInput(garageControlBar.element, ['update-car'], {
             btnTxt: 'Update',
             color: data.color,
-            text: data.text,
+            text: '',
           });
         this.raceControlBar = new RaceControlBar(garageControlBar.element);
         
 
-       this.garageCars = new BaseComponent(this.element, 'div', ['garage__cars']);
+        this.garageCars = new BaseComponent(this.element, 'div', ['garage__cars']);
         this.garageTitle = new BaseComponent(this.garageCars.element, 'h2', []);
-        this.garageTitle.element.innerHTML = `Garage (${this.carsCounter})`;
+        this.garageTitle.element.textContent = `Garage (${this.carsCounter})`;
     }
 
-   renderCars(){
+   renderCars () {
         getCars(this.garageCars.element);
-    }
+   }
 }
 
 export class RaceControlBar extends BaseComponent {
