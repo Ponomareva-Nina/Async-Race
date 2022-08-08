@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable max-len */
-import { BaseComponent, baseUrl } from './base_components';
+import { BaseComponent } from './base_components';
 import carImage from './carImage';
 
 export default class CarContainer extends BaseComponent {
@@ -33,45 +33,3 @@ export default class CarContainer extends BaseComponent {
     this.carImage.element.innerHTML = carImage(color);
   }
 }
-
-/*
-const getRandomCarName = function () {
-  const models = [
-    'BMW',
-    'Mersedes',
-    'Zhiguli',
-    'Audi',
-    'Volkswagen',
-    'Lada',
-    'Range Rover',
-    'Renault',
-    'Toyota',
-    'Jaguar',
-    'Lamborgini',
-    'Mazda',
-  ];
-
-  const carName = models[Math.floor(Math.random() * models.length)];
-  return carName;
-};
-
-const getRandomCarColor = () => {
-  const colors = [
-    'DarkOrange',
-    'CadetBlue',
-    'DarkKhaki',
-    'Gold',
-    'Orchid',
-    'LightPink',
-    'SlateBlue',
-    'LightSalmon',
-    'PaleVioletRed',
-    'Turquoise',
-  ];
-
-  const carColor = colors[Math.floor(Math.random() * colors.length)];
-  return carColor;
-};
-
-export function generateRandomCars = (carCount = 100): Array<car> =>
-    new Array(carCount).fill(1).map(() => ({ name: getRandomCarName(), color: getRandomCarColor() })); */

@@ -10,7 +10,7 @@ const api_1 = require("./api");
 class GaragePage extends base_components_1.BaseComponent {
     constructor(root, data) {
         super(root, 'section', ['section', 'garage']);
-        this.carsCounter = 4;
+        this.carsCounter = 0;
         this.currentPage = 1;
         // создание базовой разметки гаража:
         const garageControlBar = new base_components_1.BaseComponent(this.element, 'div', ['garage__control-bar']);

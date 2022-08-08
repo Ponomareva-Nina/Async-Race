@@ -2,27 +2,12 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable max-len */
 /* eslint-disable no-new */
-import { baseUrl } from './base_components';
+import {
+  baseUrl, car, winner,
+} from './base_components';
 import CarContainer from './car';
 import carImage from './carImage';
 import { WinnerRow } from './winners';
-
-export type car = {
-    id?: number;
-    name: string;
-    color: string;
-  };
-
-export type carStatus = {
-    velocity: number;
-    distance: number;
-  };
-
-export type winner = {
-    id: number;
-    wins: number;
-    time: number;
-  };
 
 export async function getCars(root: HTMLElement) {
   fetch(`${baseUrl}/garage`)
@@ -62,4 +47,20 @@ export async function getCarById(id: number) {
   const car = await response.json();
 
   return car;
+}
+
+export async function createNewCar(car: car) {
+  return (await fetch(`${baseUrl}/garage`, {
+    method: 'POST',
+    body: JSON.stringify(car),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })).json();
+}
+
+export async function deleteCar(id: number) {
+  return (await fetch(`${baseUrl}/garage/${id}`, {
+    method: 'DELETE',
+  })).json();
 }

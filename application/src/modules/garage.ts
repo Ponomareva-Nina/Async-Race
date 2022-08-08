@@ -6,7 +6,7 @@ import { BaseComponent } from './base_components';
 import { getCars } from './api';
 
 export class GaragePage extends BaseComponent {
-  private carsCounter;
+  private carsCounter: number;
 
   private currentPage;
 
@@ -22,7 +22,7 @@ export class GaragePage extends BaseComponent {
 
   constructor(root: HTMLElement, data: {color: string; text: string}) {
     super(root, 'section', ['section', 'garage']);
-    this.carsCounter = 4;
+    this.carsCounter = 0;
     this.currentPage = 1;
 
     // создание базовой разметки гаража:

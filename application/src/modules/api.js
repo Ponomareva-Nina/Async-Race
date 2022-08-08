@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCarById = exports.getWinners = exports.getCars = void 0;
+exports.deleteCar = exports.createNewCar = exports.getCarById = exports.getWinners = exports.getCars = void 0;
 /* eslint-disable no-shadow */
 /* eslint-disable no-use-before-define */
 /* eslint-disable max-len */
@@ -66,3 +66,23 @@ function getCarById(id) {
     });
 }
 exports.getCarById = getCarById;
+function createNewCar(car) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return (yield fetch(`${base_components_1.baseUrl}/garage`, {
+            method: 'POST',
+            body: JSON.stringify(car),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })).json();
+    });
+}
+exports.createNewCar = createNewCar;
+function deleteCar(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return (yield fetch(`${base_components_1.baseUrl}/garage/${id}`, {
+            method: 'DELETE',
+        })).json();
+    });
+}
+exports.deleteCar = deleteCar;
