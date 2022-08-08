@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.carImage = void 0;
 function carImage(color) {
     return `
       <svg class="car-image-svg" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 569" ">
@@ -41,4 +40,4 @@ function carImage(color) {
         </g>
     </svg>`;
 }
-exports.carImage = carImage;
+exports.default = carImage;

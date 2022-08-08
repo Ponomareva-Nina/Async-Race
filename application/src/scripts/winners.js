@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WinnerRow = exports.WinnersPage = void 0;
+/* eslint-disable max-len */
+/* eslint-disable max-classes-per-file */
 require("../styles/style.scss");
 const base_components_1 = require("./base_components");
 const api_1 = require("./api");
@@ -9,7 +11,7 @@ class WinnersPage extends base_components_1.BaseComponent {
         super(root, 'section', ['section', 'winners']);
         this.winnersCounter = 1;
         this.currentPage = 1;
-        //создание базовой разметки:
+        //  создание базовой разметки:
         this.winnersTitle = new base_components_1.BaseComponent(this.element, 'h2', []);
         this.winnersTitle.element.textContent = `Winners (${this.winnersCounter})`;
         this.winnersContainer = new base_components_1.BaseComponent(this.element, 'div', ['winners-container']);

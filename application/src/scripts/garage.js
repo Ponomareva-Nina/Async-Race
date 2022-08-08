@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarSettingsInput = exports.RaceControlBar = exports.GaragePage = void 0;
+/* eslint-disable no-use-before-define */
+/* eslint-disable max-classes-per-file */
+/* eslint-disable no-unused-vars */
 require("../styles/style.scss");
 const base_components_1 = require("./base_components");
 const api_1 = require("./api");
@@ -9,7 +12,7 @@ class GaragePage extends base_components_1.BaseComponent {
         super(root, 'section', ['section', 'garage']);
         this.carsCounter = 4;
         this.currentPage = 1;
-        //создание базовой разметки гаража:
+        // создание базовой разметки гаража:
         const garageControlBar = new base_components_1.BaseComponent(this.element, 'div', ['garage__control-bar']);
         this.createCarsBar = new CarSettingsInput(garageControlBar.element, ['create-car'], {
             btnTxt: 'Create',
@@ -47,13 +50,13 @@ class CarSettingsInput extends base_components_1.BaseComponent {
     constructor(root, styles, state) {
         super(root, 'div', styles);
         this.state = state;
-        //cоздадим текстовый инпут
+        // cоздадим текстовый инпут
         this.textInput = document.createElement('input');
         this.textInput.setAttribute('type', 'txt');
         this.textInput.classList.add(`${styles[0]}__text-input`);
         this.textInput.value = state.text;
         this.element.append(this.textInput);
-        //создадим инпут для выбора цвета:
+        // создадим инпут для выбора цвета:
         this.colorInput = document.createElement('input');
         this.colorInput.setAttribute('type', 'color');
         this.colorInput.classList.add(`${styles[0]}__color-input`);

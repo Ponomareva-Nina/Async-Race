@@ -8,22 +8,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCarById = exports.getWinners = exports.getCars = void 0;
+/* eslint-disable no-shadow */
+/* eslint-disable no-use-before-define */
+/* eslint-disable max-len */
+/* eslint-disable no-new */
 const base_components_1 = require("./base_components");
-const car_1 = require("./car");
-const carImage_1 = require("./carImage");
+const car_1 = __importDefault(require("./car"));
+const carImage_1 = __importDefault(require("./carImage"));
 const winners_1 = require("./winners");
 function getCars(root) {
     return __awaiter(this, void 0, void 0, function* () {
         fetch(`${base_components_1.baseUrl}/garage`)
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
             if (data) {
                 data.forEach((item) => {
-                    let name = item.name;
-                    let color = item.color;
-                    new car_1.CarContainer(root, name, color);
+                    const { name } = item;
+                    const { color } = item;
+                    new car_1.default(root, name, color);
                 });
             }
         });
@@ -33,18 +40,18 @@ exports.getCars = getCars;
 function getWinners(root) {
     return __awaiter(this, void 0, void 0, function* () {
         fetch(`${base_components_1.baseUrl}/winners`)
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
             if (data) {
                 data.forEach((item, index) => __awaiter(this, void 0, void 0, function* () {
-                    let number = index + 1;
-                    let id = item.id;
-                    let color = yield getCarById(id).then(car => { return car.color; });
-                    let image = (0, carImage_1.carImage)(color);
-                    let car = yield getCarById(id).then(car => { return car.name; }); //ф-ция для поиска модели машины по id
-                    let wins = item.wins;
-                    let time = item.time;
-                    new winners_1.WinnerRow(root, number, image, car, wins, time);
+                    const number = index + 1;
+                    const { id } = item;
+                    const color = yield getCarById(id).then((car) => car.color);
+                    const image = (0, carImage_1.default)(color);
+                    const carName = yield getCarById(id).then((car) => car.name); // ф-ция для поиска модели машины по id
+                    const { wins } = item;
+                    const { time } = item;
+                    new winners_1.WinnerRow(root, number, image, carName, wins, time);
                 }));
             }
         });
@@ -53,8 +60,8 @@ function getWinners(root) {
 exports.getWinners = getWinners;
 function getCarById(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        let response = yield fetch(`${base_components_1.baseUrl}/garage/${id}`);
-        let car = yield response.json();
+        const response = yield fetch(`${base_components_1.baseUrl}/garage/${id}`);
+        const car = yield response.json();
         return car;
     });
 }

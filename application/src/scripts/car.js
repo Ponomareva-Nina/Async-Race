@@ -1,8 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CarContainer = void 0;
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable max-len */
 const base_components_1 = require("./base_components");
-const carImage_1 = require("./carImage");
+const carImage_1 = __importDefault(require("./carImage"));
 class CarContainer extends base_components_1.BaseComponent {
     constructor(root, carName, color) {
         super(root, 'div', ['car-container']);
@@ -17,43 +22,48 @@ class CarContainer extends base_components_1.BaseComponent {
         this.btnReset = new base_components_1.BaseComponent(this.element, 'button', ['btn', 'reset-car-btn']);
         this.btnReset.element.textContent = 'Reset';
         this.carImage = new base_components_1.BaseComponent(this.element, 'div', ['car-image']);
-        this.carImage.element.innerHTML = (0, carImage_1.carImage)(color);
+        this.carImage.element.innerHTML = (0, carImage_1.default)(color);
     }
 }
-exports.CarContainer = CarContainer;
+exports.default = CarContainer;
+/*
 const getRandomCarName = function () {
-    const models = [
-        'BMW',
-        'Mersedes',
-        'Zhiguli',
-        'Audi',
-        'Volkswagen',
-        'Lada',
-        'Range Rover',
-        'Renault',
-        'Toyota',
-        'Jaguar',
-        'Lamborgini',
-        'Mazda'
-    ];
-    const carName = models[Math.floor(Math.random() * models.length)];
-    return carName;
+  const models = [
+    'BMW',
+    'Mersedes',
+    'Zhiguli',
+    'Audi',
+    'Volkswagen',
+    'Lada',
+    'Range Rover',
+    'Renault',
+    'Toyota',
+    'Jaguar',
+    'Lamborgini',
+    'Mazda',
+  ];
+
+  const carName = models[Math.floor(Math.random() * models.length)];
+  return carName;
 };
+
 const getRandomCarColor = () => {
-    const colors = [
-        'DarkOrange',
-        'CadetBlue',
-        'DarkKhaki',
-        'Gold',
-        'Orchid',
-        'LightPink',
-        'SlateBlue',
-        'LightSalmon',
-        'PaleVioletRed',
-        'Turquoise'
-    ];
-    const carColor = colors[Math.floor(Math.random() * colors.length)];
-    return carColor;
+  const colors = [
+    'DarkOrange',
+    'CadetBlue',
+    'DarkKhaki',
+    'Gold',
+    'Orchid',
+    'LightPink',
+    'SlateBlue',
+    'LightSalmon',
+    'PaleVioletRed',
+    'Turquoise',
+  ];
+
+  const carColor = colors[Math.floor(Math.random() * colors.length)];
+  return carColor;
 };
-/* export function generateRandomCars = (carCount = 100): Array<car> =>
-   new Array(carCount).fill(1).map(() => ({ name: getRandomCarName(), color: getRandomCarColor() }));*/ 
+
+export function generateRandomCars = (carCount = 100): Array<car> =>
+    new Array(carCount).fill(1).map(() => ({ name: getRandomCarName(), color: getRandomCarColor() })); */
