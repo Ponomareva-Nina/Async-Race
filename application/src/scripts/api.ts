@@ -1,5 +1,6 @@
 import { BaseComponent, baseUrl } from "./base_components";
 import { CarContainer } from "./car";
+import { carImage } from "./carImage";
 import { WinnersPage, WinnerRow } from "./winners";
 
   export type car = {
@@ -38,13 +39,23 @@ import { WinnersPage, WinnerRow } from "./winners";
     .then(response => response.json())
     .then (data => {
       if(data) {
-       data.forEach((item: winner, index: number) => {
-        let number = index;
-        let car = 'carModel';  //ф-ция для поиска модели машины по id
+       data.forEach(async (item: winner, index: number) => {
+        let number = index + 1;
+        let id = item.id;
+        let color = await getCarById(id).then(car => {return car.color});
+        let image = carImage(color);
+        let car = await getCarById(id).then(car => {return car.name});  //ф-ция для поиска модели машины по id
         let wins = item.wins;
         let time = item.time; 
-        new WinnerRow(root, number, car, wins, time);
+        new WinnerRow(root, number, image, car, wins, time);
        })
       }
     });
   }
+
+export async function getCarById(id: number) {
+  let response = await fetch(`${baseUrl}/garage/${id}`);
+  let car = await response.json();
+
+  return car;
+}

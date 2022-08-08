@@ -53,12 +53,12 @@ export class WinnerRow extends BaseComponent {
     winsCol;
     timeCol;
 
-    constructor (root: HTMLElement, number: number, car: string, wins: number, time: number) {
+    constructor (root: HTMLElement, number: number, image: string, car: string, wins: number, time: number) {
         super(root, 'div', ['winner-row'])
         this.numberCol = new BaseComponent(this.element, 'div', ['number']); 
         this.numberCol.element.textContent = number.toString();
         this.carCol = new BaseComponent(this.element, 'div', ['car']);
-        this.carCol.element.textContent = 'carImage';
+        this.carCol.element.innerHTML = image;
         this.nameCol = new BaseComponent(this.element, 'div', ['name']);
         this.nameCol.element.textContent = car;
         this.winsCol = new BaseComponent(this.element, 'div', ['wins']);

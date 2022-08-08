@@ -7,7 +7,7 @@ const api_1 = require("./api");
 class WinnersPage extends base_components_1.BaseComponent {
     constructor(root) {
         super(root, 'section', ['section', 'winners']);
-        this.winnersCounter = 3;
+        this.winnersCounter = 1;
         this.currentPage = 1;
         //создание базовой разметки:
         this.winnersTitle = new base_components_1.BaseComponent(this.element, 'h2', []);
@@ -32,14 +32,14 @@ class WinnersPage extends base_components_1.BaseComponent {
 }
 exports.WinnersPage = WinnersPage;
 class WinnerRow extends base_components_1.BaseComponent {
-    constructor(root, number, id, wins, time) {
+    constructor(root, number, image, car, wins, time) {
         super(root, 'div', ['winner-row']);
         this.numberCol = new base_components_1.BaseComponent(this.element, 'div', ['number']);
         this.numberCol.element.textContent = number.toString();
         this.carCol = new base_components_1.BaseComponent(this.element, 'div', ['car']);
-        this.carCol.element.textContent = 'carImage';
+        this.carCol.element.innerHTML = image;
         this.nameCol = new base_components_1.BaseComponent(this.element, 'div', ['name']);
-        this.nameCol.element.textContent = 'car model';
+        this.nameCol.element.textContent = car;
         this.winsCol = new base_components_1.BaseComponent(this.element, 'div', ['wins']);
         this.winsCol.element.textContent = wins.toString();
         this.timeCol = new base_components_1.BaseComponent(this.element, 'div', ['time']);
