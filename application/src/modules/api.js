@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteCar = exports.createNewCar = exports.getCarById = exports.getWinners = exports.getCars = void 0;
+exports.removeCar = exports.createNewCar = exports.getCarById = exports.getWinners = exports.getCars = void 0;
 /* eslint-disable no-shadow */
 /* eslint-disable no-use-before-define */
 /* eslint-disable max-len */
@@ -30,7 +30,8 @@ function getCars(root) {
                 data.forEach((item) => {
                     const { name } = item;
                     const { color } = item;
-                    new car_1.default(root, name, color);
+                    const index = Number(item.id);
+                    new car_1.default(root, name, color, index);
                 });
             }
         });
@@ -78,11 +79,11 @@ function createNewCar(car) {
     });
 }
 exports.createNewCar = createNewCar;
-function deleteCar(id) {
+function removeCar(id) {
     return __awaiter(this, void 0, void 0, function* () {
         return (yield fetch(`${base_components_1.baseUrl}/garage/${id}`, {
             method: 'DELETE',
         })).json();
     });
 }
-exports.deleteCar = deleteCar;
+exports.removeCar = removeCar;

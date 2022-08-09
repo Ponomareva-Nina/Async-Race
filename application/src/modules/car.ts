@@ -17,12 +17,14 @@ export default class CarContainer extends BaseComponent {
 
   carImage: BaseComponent;
 
-  constructor(root: HTMLElement, carName: string, color: string) {
+  constructor(root: HTMLElement, carName: string, color: string, index: number) {
     super(root, 'div', ['car-container']);
     this.btnSelect = new BaseComponent(this.element, 'button', ['btn', 'btn-select']);
+    this.btnSelect.element.id = `${index}`;
     this.btnSelect.element.textContent = 'Select';
     this.btnRemove = new BaseComponent(this.element, 'button', ['btn', 'btn-remove']);
     this.btnRemove.element.textContent = 'Remove';
+    this.btnRemove.element.id = `${index}`;
     this.carName = new BaseComponent(this.element, 'p', ['car-name', 'car-title']);
     this.carName.element.textContent = carName;
     this.btnStart = new BaseComponent(this.element, 'button', ['btn', 'start-car-btn']);

@@ -17,7 +17,8 @@ export async function getCars(root: HTMLElement) {
         data.forEach((item: car) => {
           const { name } = item;
           const { color } = item;
-          new CarContainer(root, name, color);
+          const index = Number(item.id);
+          new CarContainer(root, name, color, index);
         });
       }
     });
@@ -59,7 +60,7 @@ export async function createNewCar(car: car) {
   })).json();
 }
 
-export async function deleteCar(id: number) {
+export async function removeCar(id: number) {
   return (await fetch(`${baseUrl}/garage/${id}`, {
     method: 'DELETE',
   })).json();

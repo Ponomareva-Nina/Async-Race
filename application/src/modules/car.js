@@ -9,12 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const base_components_1 = require("./base_components");
 const carImage_1 = __importDefault(require("./carImage"));
 class CarContainer extends base_components_1.BaseComponent {
-    constructor(root, carName, color) {
+    constructor(root, carName, color, index) {
         super(root, 'div', ['car-container']);
         this.btnSelect = new base_components_1.BaseComponent(this.element, 'button', ['btn', 'btn-select']);
+        this.btnSelect.element.id = `${index}`;
         this.btnSelect.element.textContent = 'Select';
         this.btnRemove = new base_components_1.BaseComponent(this.element, 'button', ['btn', 'btn-remove']);
         this.btnRemove.element.textContent = 'Remove';
+        this.btnRemove.element.id = `${index}`;
         this.carName = new base_components_1.BaseComponent(this.element, 'p', ['car-name', 'car-title']);
         this.carName.element.textContent = carName;
         this.btnStart = new base_components_1.BaseComponent(this.element, 'button', ['btn', 'start-car-btn']);

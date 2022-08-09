@@ -25,11 +25,23 @@ const api_1 = require("./api");
 const body = document.getElementById('body');
 new header_1.default(body);
 renderGarage();
-const garageBtn = document.querySelector('.btn-garage');
-const winnersBtn = document.querySelector('.btn-winners');
-// навешиваем обработчики на кнопки-переключатели страниц winners/garage:
-winnersBtn.addEventListener('click', renderWinners);
-garageBtn.addEventListener('click', renderGarage);
+// навешиваем обработчики на кнопки в body:
+body.addEventListener('click', (event) => __awaiter(void 0, void 0, void 0, function* () {
+    const target = event.target;
+    if (target.classList.contains('btn-garage')) {
+        renderGarage();
+    }
+    else if (target.classList.contains('btn-winners')) {
+        renderWinners();
+    }
+    else if (target.classList.contains('create-car__btn')) {
+        createCar();
+    }
+    else if (target.classList.contains('btn-remove')) {
+        (0, api_1.removeCar)(Number(target.id));
+        renderGarage();
+    }
+}));
 function renderWinners() {
     return __awaiter(this, void 0, void 0, function* () {
         clearPage();
@@ -42,8 +54,6 @@ function renderGarage() {
         clearPage();
         const garage = yield new garage_1.GaragePage(body, { color: 'yellow', text: 'VolksWagen' });
         yield garage.renderCars();
-        const createCarBtn = document.querySelector('.create-car__btn');
-        createCarBtn.addEventListener('click', createCar);
     });
 }
 function clearPage() {

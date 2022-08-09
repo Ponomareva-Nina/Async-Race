@@ -9,19 +9,26 @@ import Header from './header';
 import { GaragePage } from './garage';
 import { WinnersPage } from './winners';
 import { car } from './base_components';
-import { createNewCar, deleteCar } from './api';
+import { createNewCar, removeCar } from './api';
 
 const body: HTMLElement = document.getElementById('body') as HTMLElement;
-
 new Header(body);
 renderGarage();
 
-const garageBtn = document.querySelector('.btn-garage') as HTMLElement;
-const winnersBtn = document.querySelector('.btn-winners') as HTMLElement;
-
-// навешиваем обработчики на кнопки-переключатели страниц winners/garage:
-winnersBtn.addEventListener('click', renderWinners);
-garageBtn.addEventListener('click', renderGarage);
+// навешиваем обработчики на кнопки в body:
+body.addEventListener('click', async (event) => {
+  const target = <HTMLElement>event.target;
+  if (target.classList.contains('btn-garage')) {
+    renderGarage();
+  } else if (target.classList.contains('btn-winners')) {
+    renderWinners();
+  } else if (target.classList.contains('create-car__btn')) {
+    createCar();
+  } else if (target.classList.contains('btn-remove')) {
+    removeCar(Number(target.id));
+    renderGarage();
+  }
+});
 
 async function renderWinners() {
   clearPage();
@@ -33,8 +40,6 @@ async function renderGarage() {
   clearPage();
   const garage = await new GaragePage(body, { color: 'yellow', text: 'VolksWagen' });
   await garage.renderCars();
-  const createCarBtn = document.querySelector('.create-car__btn') as HTMLElement;
-  createCarBtn.addEventListener('click', createCar);
 }
 
 function clearPage(): void {
@@ -46,7 +51,6 @@ async function createCar() {
   const nameInput = document.querySelector('.create-car__text-input') as HTMLInputElement;
   const colorInput = document.querySelector('.create-car__color-input') as HTMLInputElement;
   const newCar = { name: nameInput.value, color: colorInput.value };
-
   await createNewCar(newCar);
   await renderGarage();
 }
